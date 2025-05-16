@@ -11,27 +11,22 @@ Pod::Spec.new do |spec|
   
   spec.source = { :git => "https://github.com/Wu-An-Jun/newios_sdk.git", :tag => "#{spec.version}" }
   
-  # 从source_files中排除Sigmob目录
+  # 排除有问题的文件夹
   spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude", "Classes/Adapters/Sigmob/**/*"
+  spec.exclude_files = "Classes/Exclude", "Classes/Adapters/Sigmob/**/*", "Classes/GroMoreBidding/**/*"
   
   spec.static_framework = true
   spec.frameworks = "Foundation", "UIKit", "AdSupport"
   spec.requires_arc = true
   
-  # 添加SDK依赖，不包括WindSDK
+  # 添加SDK依赖，但不包括有问题的SDK
   spec.dependency "TanxSDK"
   spec.dependency "BaiduMobAdSDK"
-  spec.dependency "Ads-CN"
+  spec.dependency "Ads-CN"         # 穿山甲基础SDK
+  # spec.dependency "ABUAdSDK"     # 穿山甲GroMore SDK，如果需要请添加
   spec.dependency "GDTMobSDK"
   spec.dependency "KSAdSDK"
   spec.dependency "MercurySDK"
   
-  # 添加xcconfig以解决架构冲突
-  spec.pod_target_xcconfig = { 
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  }
-  spec.user_target_xcconfig = { 
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  }
+  # 不要设置xcconfig，避免冲突
 end
