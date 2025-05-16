@@ -15,18 +15,25 @@ Pod::Spec.new do |spec|
   spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   spec.exclude_files = "Classes/Exclude", 
                       "Classes/Adapters/Sigmob/**/*", 
-                      "Classes/GroMoreBidding/**/*",
-                      "Classes/Adapters/TANX/**/*"
+                      "Classes/Adapters/TANX/**/*",
+                      "Classes/Adapters/Mercury/**/*",
+                      "Classes/GroMoreBidding/**/*"
   
   spec.static_framework = true
   spec.frameworks = "Foundation", "UIKit", "AdSupport"
   spec.requires_arc = true
   
-  # 为了通过验证，暂时移除可能有问题的依赖
+  # 移除问题依赖
   # spec.dependency "TanxSDK"
   spec.dependency "BaiduMobAdSDK"
   spec.dependency "Ads-CN"
   spec.dependency "GDTMobSDK"
   spec.dependency "KSAdSDK"
-  spec.dependency "MercurySDK"
+  # spec.dependency "MercurySDK"
+  
+  # 添加模块化支持
+  spec.pod_target_xcconfig = {
+    'DEFINES_MODULE' => 'YES',
+    'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64'
+  }
 end
