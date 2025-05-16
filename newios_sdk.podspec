@@ -21,7 +21,7 @@ Pod::Spec.new do |spec|
   
   # 添加所有需要的依赖
   spec.dependency "TanxSDK"     # TANX广告SDK
-  spec.dependency "WindSDK"     # Sigmob广告SDK
+  # spec.dependency "WindSDK"     # Sigmob广告SDK
   spec.dependency "BaiduMobAdSDK"        # 百度广告
   spec.dependency "Ads-CN"               # 穿山甲/CSJ
   spec.dependency "GDTMobSDK"            # 广点通/GDT/优量汇
