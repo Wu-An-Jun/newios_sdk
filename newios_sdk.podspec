@@ -23,9 +23,10 @@ Pod::Spec.new do |s|
     s.requires_arc = true
     s.static_framework = true
 
-    s.resource_bundles = {
-         'newios_sdk' => ['newios_sdk/Assets/**.*']
-       }
+s.resource_bundles = {
+  'newios_sdk' => ['newios_sdk/Assets/**/*.*']
+}
+
 
     # 默认的使用模块
     s.default_subspec = 'Core'
